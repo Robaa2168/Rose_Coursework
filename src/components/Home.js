@@ -103,7 +103,7 @@ const Home = () => {
               <div className="card h-100 border-0 shadow">
                 <div className="card-header">
                   <h5 className="card-title">
-                    {selectedCountry2.name.common} Map
+                    {selectedCountry2.name.common} <br/> Map
                   </h5>
                 </div>
                 <div className="card-body">
