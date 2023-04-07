@@ -28,16 +28,15 @@ const CountrySearch = ({ onCountrySelect, onCountrySelect2 }) => {
     const countryCode = event.target.value;
     const countryData = countries.find((country) => country.cca3 === countryCode);
     setSelectedCountry(countryCode);
-    onCountrySelect(countryData);
+    onCountrySelect(countryData, countryCode);
   };
-
+  
   const handleCountryChange2 = (event) => {
     const countryCode = event.target.value;
     const countryData = countries.find((country) => country.cca3 === countryCode);
     setSelectedCountry2(countryCode);
-    onCountrySelect2(countryData);
+    onCountrySelect2(countryData, countryCode);
   };
-
   return (
     <div className="row">
       <div className="col-md-6 mb-3">

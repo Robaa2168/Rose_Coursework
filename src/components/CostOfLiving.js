@@ -6,23 +6,32 @@ const CostOfLiving = ({ countryCode, capital }) => {
   const [costOfLivingData, setCostOfLivingData] = useState(null);
 
   useEffect(() => {
+    console.log('Country Code:', countryCode);
+    console.log('Capital:', capital);
     if (countryCode && capital) {
       fetchCostOfLivingData(countryCode, capital);
     }
   }, [countryCode, capital]);
 
-  const fetchCostOfLivingData = async (countryCode, capital) => {
+
+
+  const fetchCostOfLivingData = async (countryName, cityName) => {
     try {
       const response = await axios.get(
-        `https://cost-of-living-and-prices.p.rapidapi.com/cities/city?country=${countryCode}&city=${capital}`,
+        `https://cost-of-living-and-prices.p.rapidapi.com/prices`,
         {
-            headers: {
-                'X-RapidAPI-Key': '2f52f36206msh6c98a3d8f128180p1ade89jsnb03cb5400cdb',
-                'X-RapidAPI-Host': 'cost-of-living-and-prices.p.rapidapi.com'
-              },
+          headers: {
+            'X-RapidAPI-Key': '2f52f36206msh6c98a3d8f128180p1ade89jsnb03cb5400cdb',
+            'X-RapidAPI-Host': 'cost-of-living-and-prices.p.rapidapi.com'
+          },
+          params: {
+            country_name: countryName,
+            city_name: cityName
+          }
         }
       );
       setCostOfLivingData(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error('Error fetching cost of living data:', error);
     }

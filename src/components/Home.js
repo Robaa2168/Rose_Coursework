@@ -10,14 +10,18 @@ import { LoadScript } from '@react-google-maps/api';
 
 const Home = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
+  const [countryCode, setCountryCode] = useState(null);
   const [selectedCountry2, setSelectedCountry2] = useState(null);
+  const [countryCode2, setCountryCode2] = useState(null);
 
-  const handleCountrySelect = (countryData) => {
+  const handleCountrySelect = (countryData, code) => {
     setSelectedCountry(countryData);
+    setCountryCode(code);
   };
 
-  const handleCountrySelect2 = (countryData) => {
+  const handleCountrySelect2 = (countryData, code) => {
     setSelectedCountry2(countryData);
+    setCountryCode2(code);
   };
 
   return (
@@ -50,7 +54,7 @@ const Home = () => {
                   </h6>
                 </div>
                 <div className="card-body">
-                  <CostOfLiving countryCode={selectedCountry.iso_alpha3} />
+                <CostOfLiving countryCode={countryCode} capital={selectedCountry.capital} />
                 </div>
               </div>
             </div>
@@ -83,7 +87,7 @@ const Home = () => {
                   </h6>
                 </div>
                 <div className="card-body">
-                  <CountryInfo country={selectedCountry2} />
+                <CostOfLiving countryCode={countryCode2} capital={selectedCountry2.capital} />
                 </div>
               </div>
             </div>
