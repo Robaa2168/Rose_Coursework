@@ -15,7 +15,7 @@ const CountrySearch = ({ onCountrySelect, onCountrySelect2 }) => {
       const response = await axios.get('https://country-facts.p.rapidapi.com/region/america', {
         headers: {
           'x-rapidapi-host': 'country-facts.p.rapidapi.com',
-          'x-rapidapi-key': '2f52f36206msh6c98a3d8f128180p1ade89jsnb03cb5400cdb',
+          'x-rapidapi-key': 'cf2308a83fmsh748c3d23211cd51p1e3e61jsna79e15727b38',
         },
       });
       setCountries(response.data);

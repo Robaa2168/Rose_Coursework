@@ -10,18 +10,18 @@ import { LoadScript } from '@react-google-maps/api';
 
 const Home = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
-  const [countryCode, setCountryCode] = useState(null);
+  const [countryName, setCountryName] = useState(null); 
   const [selectedCountry2, setSelectedCountry2] = useState(null);
-  const [countryCode2, setCountryCode2] = useState(null);
+  const [countryName2, setCountryName2] = useState(null); 
 
-  const handleCountrySelect = (countryData, code) => {
+  const handleCountrySelect = (countryData) => {
     setSelectedCountry(countryData);
-    setCountryCode(code);
+    setCountryName(countryData.name.common);
   };
 
-  const handleCountrySelect2 = (countryData, code) => {
+  const handleCountrySelect2 = (countryData) => {
     setSelectedCountry2(countryData);
-    setCountryCode2(code);
+    setCountryName2(countryData.name.common); // set country name instead of code
   };
 
   return (
@@ -54,7 +54,7 @@ const Home = () => {
                   </h6>
                 </div>
                 <div className="card-body">
-                <CostOfLiving countryCode={countryCode} capital={selectedCountry.capital} />
+                <CostOfLiving countryName={countryName} capital={selectedCountry.capital} />
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@ const Home = () => {
                   </h6>
                 </div>
                 <div className="card-body">
-                <CostOfLiving countryCode={countryCode2} capital={selectedCountry2.capital} />
+                <CountryInfo country={selectedCountry2} />
                 </div>
               </div>
             </div>
@@ -99,7 +99,8 @@ const Home = () => {
                   </h6>
                 </div>
                 <div className="card-body">
-                  <CostOfLiving countryCode={selectedCountry2.iso_alpha3} />
+                <CostOfLiving countryName={countryName2} capital={selectedCountry2.capital} />
+                
                 </div>
               </div>
             </div>

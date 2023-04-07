@@ -1,33 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Bar } from 'react-chartjs-2';
+import Chart from "chart.js/auto";
+import { CategoryScale, LinearScale, BarController, BarElement } from 'chart.js';
 
-const CostOfLiving = ({ countryCode, capital }) => {
+// Register the required components
+Chart.register(CategoryScale, LinearScale, BarController, BarElement);
+
+const CostOfLiving = ({ countryName, capital }) => {
   const [costOfLivingData, setCostOfLivingData] = useState(null);
 
   useEffect(() => {
-    console.log('Country Code:', countryCode);
+    console.log('Country:', countryName);
     console.log('Capital:', capital);
-    if (countryCode && capital) {
-      fetchCostOfLivingData(countryCode, capital);
+    if (countryName && capital) {
+      fetchCostOfLivingData(countryName, capital);
     }
-  }, [countryCode, capital]);
-
-
+  }, [countryName, capital]);
 
   const fetchCostOfLivingData = async (countryName, cityName) => {
+    console.log(countryName,cityName);
     try {
       const response = await axios.get(
         `https://cost-of-living-and-prices.p.rapidapi.com/prices`,
         {
           headers: {
-            'X-RapidAPI-Key': '2f52f36206msh6c98a3d8f128180p1ade89jsnb03cb5400cdb',
+            'X-RapidAPI-Key': 'cf2308a83fmsh748c3d23211cd51p1e3e61jsna79e15727b38',
             'X-RapidAPI-Host': 'cost-of-living-and-prices.p.rapidapi.com'
           },
           params: {
+            city_name: cityName,
             country_name: countryName,
-            city_name: cityName
-          }
+          },
         }
       );
       setCostOfLivingData(response.data);
@@ -54,6 +58,20 @@ const CostOfLiving = ({ countryCode, capital }) => {
     };
   };
 
+
+  const options = {
+    scales: {
+      x: {
+        type: 'category',
+        display: true,
+      },
+      y: {
+        type: 'linear',
+        beginAtZero: true,
+      },
+    },
+  };
+
   if (!costOfLivingData) {
     return <div>Loading cost of living data...</div>;
   }
@@ -61,7 +79,7 @@ const CostOfLiving = ({ countryCode, capital }) => {
   return (
     <div className="cost-of-living">
       <h3>Cost of Living</h3>
-      <Bar data={prepareChartData()} />
+      <Bar data={prepareChartData()} options={options} />
     </div>
   );
 };
