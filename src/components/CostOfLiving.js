@@ -19,13 +19,12 @@ const CostOfLiving = ({ countryName, capital }) => {
   }, [countryName, capital]);
 
   const fetchCostOfLivingData = async (countryName, cityName) => {
-    console.log(countryName,cityName);
     try {
       const response = await axios.get(
         `https://cost-of-living-and-prices.p.rapidapi.com/prices`,
         {
           headers: {
-            'X-RapidAPI-Key': 'cf2308a83fmsh748c3d23211cd51p1e3e61jsna79e15727b38',
+            'X-RapidAPI-Key': '2f52f36206msh6c98a3d8f128180p1ade89jsnb03cb5400cdb',
             'X-RapidAPI-Host': 'cost-of-living-and-prices.p.rapidapi.com'
           },
           params: {

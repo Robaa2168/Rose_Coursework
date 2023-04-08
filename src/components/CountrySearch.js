@@ -39,7 +39,7 @@ const CountrySearch = ({ onCountrySelect, onCountrySelect2 }) => {
   };
   return (
     <div className="row">
-      <div className="col-md-6 mb-3">
+      <div className="col-md-6 mb-3 align-items-center justify-content-center">
         <label htmlFor="country-select" className="form-label">Country:</label>
         <br/>
         <select
@@ -57,7 +57,7 @@ const CountrySearch = ({ onCountrySelect, onCountrySelect2 }) => {
         </select>
       </div>
 
-      <div className="col-md-6 mb-3">
+      <div className="col-md-6 mb-3 align-items-center justify-content-center">
         <label htmlFor="country-select2" className="form-label">Compare with:</label>
         <br/>
         <select

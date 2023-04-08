@@ -32,7 +32,7 @@ const Contact = () => {
             <Form.Label>Message:</Form.Label>
             <Form.Control as="textarea" name="message" value={formData.message} onChange={handleChange} required />
           </Form.Group>
-          <Button variant="primary" className="m-2" type="submit">Submit</Button>
+          <Button variant="secondary" className="m-2" type="submit">Submit</Button>
         </Form>
       </div>
     </Container>
