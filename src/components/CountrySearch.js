@@ -38,43 +38,44 @@ const CountrySearch = ({ onCountrySelect, onCountrySelect2 }) => {
     onCountrySelect2(countryData, countryCode);
   };
   return (
-    <div className="row">
-      <div className="col-md-6 mb-3 align-items-center justify-content-center">
-        <label htmlFor="country-select" className="form-label">Country:</label>
-        <br/>
-        <select
-          id="country-select"
-          className="form-select"
-          value={selectedCountry}
-          onChange={handleCountryChange}
-        >
-          <option value="">Choose a country</option>
-          {countries.map((country) => (
-            <option key={country.cca3} value={country.cca3}>
-              {country.name.common}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className="col-md-6 mb-3 align-items-center justify-content-center">
-        <label htmlFor="country-select2" className="form-label">Compare with:</label>
-        <br/>
-        <select
-          id="country-select2"
-          className="form-select"
-          value={selectedCountry2}
-          onChange={handleCountryChange2}
-        >
-          <option value="">Choose a country</option>
-          {countries.map((country) => (
-            <option key={country.cca3} value={country.cca3}>
-              {country.name.common}
-            </option>
-          ))}
-        </select>
-      </div>
+    <div className="row text-center">
+    <div className="col-md-6 mb-3 ">
+      <label htmlFor="country-select" className="form-label">Country:</label>
+      <br/>
+      <select
+        id="country-select"
+        className="form-select"
+        value={selectedCountry}
+        onChange={handleCountryChange}
+      >
+        <option value="">Choose a country</option>
+        {countries.map((country) => (
+          <option key={country.cca3} value={country.cca3}>
+            {country.name.common}
+          </option>
+        ))}
+      </select>
     </div>
+  
+    <div className="col-md-6 mb-3">
+      <label htmlFor="country-select2" className="form-label">Compare with:</label>
+      <br/>
+      <select
+        id="country-select2"
+        className="form-select"
+        value={selectedCountry2}
+        onChange={handleCountryChange2}
+      >
+        <option value="">Choose a country</option>
+        {countries.map((country) => (
+          <option key={country.cca3} value={country.cca3}>
+            {country.name.common}
+          </option>
+        ))}
+      </select>
+    </div>
+  </div>
+  
   );
 };
 
